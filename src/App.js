@@ -54,10 +54,26 @@ function App() {
     );
   };
 
+  const cartTotal = () => {
+    let total = 0;
+    let price;
+    if (cart.length === 0) {
+      return "$0.00";
+    } else {
+      cart.map((product) => {
+        price = parseFloat(product.price);
+        total += price;
+      });
+    }
+    console.log(total);
+    return `$${total}`;
+  };
+
   const renderCart = () => {
     return (
       <div>
         <h1>Your Cart</h1>
+        <h2>Your total: {cartTotal()}</h2>
         <div className="products">
           {cart.map((product, index) => {
             return (
